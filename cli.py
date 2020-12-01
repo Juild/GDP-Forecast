@@ -15,15 +15,16 @@ logging.basicConfig(
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
-    "task",
-    choices=["train", "predict"],
-    help="Task to be performed",
+    "task", # argv1 only one argument
+    choices=["train", "predict", "country"], # choices for argv1
+    help="Task to be performed", # message displayed if "python cli.py --help"
 )
 # You can add here custom optional arguments to your program
 
 if __name__ == "__main__":
-    args = parser.parse_args()
+    args = parser.parse_args() # gets the arguments "python3  cli.py argv1, argv2 ..."  
     if args.task == "train":
+        print("training")
         logging.info("Training")
     if args.task == "predict":
         logging.info("Predinting")
