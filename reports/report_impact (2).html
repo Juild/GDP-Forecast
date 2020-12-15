@@ -13090,8 +13090,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="IMPACT-OF-THE-SELECTED-FEATURES-IN-THE-MODEL"><strong>IMPACT OF THE SELECTED FEATURES IN THE MODEL</strong><a class="anchor-link" href="#IMPACT-OF-THE-SELECTED-FEATURES-IN-THE-MODEL">&#182;</a></h1><p>To predict the <em>next year</em> GDP growth for each country in the world are been used the following 50 features.</p>
-
+<h1 id="IMPACT-OF-THE-SELECTED-FEATURES-IN-THE-MODEL"><strong>IMPACT OF THE SELECTED FEATURES IN THE MODEL</strong><a class="anchor-link" href="#IMPACT-OF-THE-SELECTED-FEATURES-IN-THE-MODEL">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -13194,7 +13193,7 @@ n===t._wrapperState.initialValue&&(e.value=n)}});t.exports=l},function(t,e,n){"u
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">clean_and_pivote</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
-    <span class="n">countries_gdp</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;IndicatorCode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">config</span><span class="o">.</span><span class="n">GDP</span><span class="p">][</span><span class="s2">&quot;CountryCode&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span> <span class="c1">#countries with gdp</span>
+    <span class="n">countries_gdp</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;IndicatorCode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">config</span><span class="o">.</span><span class="n">GDP_GROWTH</span><span class="p">][</span><span class="s2">&quot;CountryCode&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span> <span class="c1">#countries with gdp</span>
     <span class="n">countries</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CountryCode&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
     <span class="n">countries_no_gdp</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">countries</span><span class="p">))</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">countries_gdp</span><span class="p">)))</span> <span class="c1"># set difference =  countries with no gdp</span>
 
@@ -13212,7 +13211,7 @@ n===t._wrapperState.initialValue&&(e.value=n)}});t.exports=l},function(t,e,n){"u
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_cleaned</span> <span class="o">=</span> <span class="n">clean_and_pivote</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-<span class="n">df_cleaned</span> <span class="o">=</span> <span class="n">df_cleaned</span><span class="p">[</span><span class="n">config</span><span class="o">.</span><span class="n">FEATURES</span><span class="p">]</span>
+<span class="n">df_cleaned</span> <span class="o">=</span> <span class="n">df_cleaned</span><span class="p">[</span><span class="n">config</span><span class="o">.</span><span class="n">MODEL_FEATURES</span><span class="p">]</span>
 <span class="n">df_cleaned</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1960</span><span class="p">,</span> <span class="mi">1980</span><span class="p">),</span> <span class="n">level</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
@@ -13247,7 +13246,7 @@ n===t._wrapperState.initialValue&&(e.value=n)}});t.exports=l},function(t,e,n){"u
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_features</span> <span class="o">=</span> <span class="n">df_cleaned</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">df_target</span> <span class="o">=</span> <span class="n">df_cleaned</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">GDP</span><span class="p">)</span>
+<span class="n">df_target</span> <span class="o">=</span> <span class="n">df_cleaned</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">GDP_GROWTH</span><span class="p">)</span>
 <span class="n">df_features</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">2010</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">df_target</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="mi">1980</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -13348,8 +13347,8 @@ n===t._wrapperState.initialValue&&(e.value=n)}});t.exports=l},function(t,e,n){"u
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In this plot we can see the impact of each 50 features, in descending order, in each observation.</p>
 <p>The most important feature, by far, is the value of the <em>GDP Growth (annual \%) of the actual year</em>, which makes sense given that we are trying to predict the <em>GDP Growth of the next year</em>. Both variables are directly correlated, high values of <em>GDP Growth of the actual year</em> imply a positive impact in the predictions of the <em>GDP Growth of the next year</em>, this positive relationship appears, to a lesser extent, in other features like <em>Exports of goods and services (annual % growth)</em>, <em>S&amp;P Global Equity Indices (annual % change)</em>, etc.</p>
-<p>The other hand they are negative relations, for example for lower values of <em>Import value index (c.i.f)</em> we obtain higher values of <em>GDP Growth of the next year</em>.</p>
-<p>A remarkable thing is the features like <em>Energy use (kg of oil) per $1k GDP</em> and <em>Government consumption expenditure(\% of GDP)</em>, this features seems only have and important impact when they have high values. We can interpret a higher <em>Energy use</em>  can affect in both 'directions', positively or negatively, in the <em>GDP Growth of the next year</em> and a lower <em>Energy use</em> have an impact in the <em>GDP Growth of the next year</em> closer to 0.</p>
+<p>On the other hand, there are negative relations, for example, for lower values of <em>Import value index (c.i.f)</em> we obtain higher values of <em>GDP Growth of the next year</em>.</p>
+<p>A remarkable thing is the features like <em>Energy use (kg of oil) per $1k GDP</em> and <em>Government consumption expenditure(\% of GDP)</em>. These features seem only have and important impact when they have high values. We can interpret that a higher <em>Energy use</em> can affect in both 'directions', positively or negatively, in the <em>GDP Growth of the next year</em> and a lower <em>Energy use</em> has an impact in the <em>GDP Growth of the next year</em> close to 0.</p>
 
 </div>
 </div>
@@ -13357,7 +13356,7 @@ n===t._wrapperState.initialValue&&(e.value=n)}});t.exports=l},function(t,e,n){"u
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Correlation-matrix"><strong>Correlation matrix</strong><a class="anchor-link" href="#Correlation-matrix">&#182;</a></h2><p>Furthermore we can compute the correlation matrix to obtain more information about the relation between the features.</p>
+<h2 id="Correlation-matrix"><strong>Correlation matrix</strong><a class="anchor-link" href="#Correlation-matrix">&#182;</a></h2><p>Furthermore, we can compute the correlation matrix to obtain more information about the relation between the features.</p>
 
 </div>
 </div>
@@ -16589,7 +16588,7 @@ n===t._wrapperState.initialValue&&(e.value=n)}});t.exports=l},function(t,e,n){"u
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The red values imply a postive relation and the blue values a negative relation, the intesity of the colour represents the intensity of the relation, more intense colour more strongly correlated are the features and less instense wekear correlated are. For example, the more positively correlated feature with <em>GDP Growth (annual %)</em> is eventually <em>GDP per capita growth(annual %)</em> (0.97) and the more negatively correlated feature is <em>Fixed broadband subscriptions(per 100 people)</em> (-0.27).</p>
+<p>The red values imply a positive relation, and the blue values a negative one. The intesity of the colour represents the intensity of the relation; the more intense the colour, the more strongly correlated the featueres are and viceversa. For example, the more positively correlated feature with <em>GDP Growth (annual %)</em> is eventually <em>GDP per capita growth(annual %)</em> (0.97), whereas the more negatively correlated feature is <em>Fixed broadband subscriptions(per 100 people)</em> (-0.27).</p>
 
 </div>
 </div>
