@@ -20,7 +20,7 @@ parser.add_argument(
 )
 parser.add_argument(
     "-year", 
-    choices=[str(year) for year in range(1981, 2011)],
+    choices=[str(year) for year in range(1981, 2011 + 1)],
     help="Year to be predicted",
     default="2010"
 )

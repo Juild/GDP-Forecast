@@ -73,11 +73,12 @@ class GDPGrowthPredictor(XGBRegressor):
             year to perform a prediction on the GDP growth.
         """
         dfs = []
-        countries = self.__features.index.get_level_values(level=config.COUNTRY_CODE).unique()
+        countries = self.__training_dataset.index.get_level_values(level=config.COUNTRY_CODE).unique()
         for country in countries:
-            dfs.append(self.__features.loc[(country, year - 1)].to_frame().T)
+            dfs.append(self.__training_dataset.loc[(country, year - 1)].to_frame().T)
        
         self.__prediction_dataset = pd.concat(dfs)
+        self.__prediction_dataset.fillna(self.__prediction_dataset.mean(), inplace=True)
         sys.stdout.write("Predicting...")
         sys.stdout.flush()
         predictions = super().predict(self.__prediction_dataset.to_numpy(), output_margin=True, **kwargs)

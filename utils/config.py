@@ -69,8 +69,8 @@ MODEL_FEATURES = [GDP_GROWTH,
  'FS.AST.DOMS.GD.ZS',
  'IQ.WEF.CUST.XQ']
 
- FEATURE_LABELS = ['GDP growth(annual %)',
-                 'Import value index(c.i.f)',
+FEATURE_LABELS = ['GDP growth(annual %)',
+                'Import value index(c.i.f)',
                  'Health expenditure per capita(current US$)',
                  'Export value index(f.o.b)',
                  'Exports of goods and services(annual % growth)',
