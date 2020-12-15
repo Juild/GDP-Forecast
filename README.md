@@ -1,8 +1,4 @@
----
-title: "GDP Growth Forecast"
-output: html_document
-
----
+## GDP Growth Forecast
 
 __Authors__:
 
