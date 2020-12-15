@@ -44,6 +44,7 @@ class GDPGrowthPredictor(XGBRegressor):
         and creates the __features  and __target attributes, which will be
         later passed to the XGBRegressor.fit method.
         """
+
         first_year = self.__training_dataset.index.get_level_values(level=config.YEAR).unique()[0]
         last_year = self.__training_dataset.index.get_level_values(level=config.YEAR).unique()[-1]
 
@@ -53,6 +54,7 @@ class GDPGrowthPredictor(XGBRegressor):
 
         self.__features.fillna(self.__features.mean(), inplace=True)
         self.__target.fillna(self.__target.mean(), inplace=True)
+        
         # set base score for the XGBRegressor
         self.base_score = self.__target.to_numpy().mean()
         sys.stdout.write("Training...")
