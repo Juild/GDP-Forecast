@@ -5,11 +5,12 @@ __Authors__:
 
 -Juan Carlos Barroso Ruiz 1388269
 
-
--Lola Pailler Gracía 1430776
-
-
 -Adrià Colàs Gallardo 1419956
+
+-Lola Pailler García 1430776
+
+
+
 
 
 The goal of this project is to effectively predict the GDP growth for all countries in the world
