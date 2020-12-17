@@ -3,11 +3,11 @@
 __Authors__:
 
 
--Juan Carlos Barroso Ruiz 1388269
+-Juan Carlos Barroso Ruiz 
 
--Adrià Colàs Gallardo 1419956
+-Adrià Colàs Gallardo 
 
--Lola Pailler García 1430776
+-Lola Pailler García 
 
 
 
